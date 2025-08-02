@@ -1,22 +1,14 @@
 
-import logging
+import asyncio
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO
-)
+BOT_TOKEN = "8486150937:AAEZAmbMhXkONZDb5wKojZy0jCr8EgCP0qk"
 
-# أمر /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("أهلًا وسهلًا في بوت نور الهدى 🌸 كيف بقدر أساعدك؟")
+    await update.message.reply_text("أهلاً في شركة نور الهدى للحوالات المصرفية 💰، كيف ممكن أساعدك؟")
 
-if __name__ == '__main__':
-    import os
-    TOKEN = os.environ.get("BOT_TOKEN")
-
-    app = ApplicationBuilder().token(TOKEN).build()
+if __name__ == "__main__":
+    app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
-
     app.run_polling()
